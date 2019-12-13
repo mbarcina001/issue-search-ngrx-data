@@ -16,7 +16,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { SearchComponent } from './components/search/search.component';
 import { MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FieldErrorComponent } from './components/field-error/field-error.component';
+import { FieldErrorComponent } from './components/layout/field-error/field-error.component';
 import { DialogComponent } from './components/layout/dialog/dialog.component';
 
 
