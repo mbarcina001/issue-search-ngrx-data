@@ -1,0 +1,11 @@
+<div *ngIf="issueList" class="mt-4 mb-4 list-group list-group-flush" [hidden]="isLoading$ || errorMessage$">
+    <div class="issue list-group-item" *ngFor="let issue of issueList$ | async">
+        <p class="mb-0 title">{{issue.title}}</p>
+        <p class="mb-0">by {{issue.publisher}}</p>
+        <div class="go-to-repo-link">
+            <a href="{{issue.url}}" target="_blank">
+                <i class="material-icons">launch</i>
+            </a>
+        </div>
+    </div>
+</div>

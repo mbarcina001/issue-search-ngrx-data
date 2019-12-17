@@ -1,4 +1,4 @@
-<div id="search-bar" [class.no-margin-top]="(issueList$ | async)?.length>0">
+<div id="search-bar" [class.no-margin-top]="issueList!=null && issueList.length>0">
     <form #myForm="ngForm" autocomplete="off" novalidate>
         <div class="input-group mt-4 mb-1">
             <div class="input-group-prepend">
@@ -20,16 +20,13 @@
                 </span>
             </div>
         </div>
-        <p id="repoHelp" class="font-weight-light mb-2" [hidden]="(issueList$ | async)?.length>0 && !(errorMessage$ | async)">e.g: {{eg}}</p>
+        <!--<p id="repoHelp" class="font-weight-light mb-2" [hidden]="issueList.length>0 && !(errorMessage$ | async)">e.g: microsoft/cascadia-code</p>-->
         <app-field-error [control]="repo"></app-field-error>
     </form>
 </div>
 
-<div id="loading" class="text-center" [hidden]="!(isLoading$ | async)">
+<div id="loading" class="text-center" [hidden]="!isLoading">
     <p>Loading...</p>
     <mat-spinner></mat-spinner>
 </div>
 
-<div *ngIf="issueList$ | async" class="mt-4 mb-4 list-group list-group-flush" [hidden]="(isLoading$ | async) || (errorMessage$ | async)">
-    <app-issue *ngFor="let issue of issueList$ | async" [issue]="issue"></app-issue>
-</div>
