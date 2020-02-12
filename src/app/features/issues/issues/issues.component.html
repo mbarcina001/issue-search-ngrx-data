@@ -1,0 +1,4 @@
+<div class="content-container">
+    <p>I'm here!!</p>
+    <app-issue-search [issueList]="issues$" [isLoading]="loading$" [errorMessage]="errorMessage$" (onSearch)="getIssuesByRepo($event)"></app-issue-search>
+</div>

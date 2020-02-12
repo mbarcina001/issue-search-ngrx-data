@@ -1,10 +1,6 @@
 
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { NgForm } from '@angular/forms';
-import { MatDialog } from '@angular/material';
-import { DialogComponent } from '../../components/layout/dialog/dialog.component';
-import { Observable } from 'rxjs';
 import { Issue } from 'src/app/core/model/issue';
 
 @Component({

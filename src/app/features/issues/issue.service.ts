@@ -4,7 +4,7 @@ import {
   EntityCollectionServiceElementsFactory
 } from 'ngrx-data';
 import { HttpClient } from '@angular/common/http';
-import { Issue } from '../core/model/issue';
+import { Issue } from '../../core/model/issue';
 
 @Injectable({ providedIn: 'root' })
 export class IssueService extends EntityCollectionServiceBase<Issue> {
