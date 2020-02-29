@@ -1,5 +1,5 @@
-<div *ngIf="issueList" class="mt-4 mb-4 list-group list-group-flush" [hidden]="isLoading$ || errorMessage$">
-    <div class="issue list-group-item" *ngFor="let issue of issueList$ | async">
+<div *ngIf="issueList" class="mt-4 mb-4 list-group list-group-flush" [hidden]="isLoading || errorMessage">
+    <div class="issue list-group-item" *ngFor="let issue of issueList">
         <p class="mb-0 title">{{issue.title}}</p>
         <p class="mb-0">by {{issue.publisher}}</p>
         <div class="go-to-repo-link">

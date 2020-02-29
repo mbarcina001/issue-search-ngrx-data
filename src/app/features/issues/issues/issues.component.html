@@ -1,4 +1,10 @@
 <div class="content-container">
-    <p>I'm here!!</p>
-    <app-issue-search [issueList]="issues$" [isLoading]="loading$" [errorMessage]="errorMessage$" (onSearch)="getIssuesByRepo($event)"></app-issue-search>
+    <app-issue-search 
+        [issueList]="issues$ |async" [isLoading]="loading$ | async" [errorMessage]="errorMessage$ | async" 
+        (onSearch)="getIssuesByRepo($event)">
+    </app-issue-search>
+
+    <app-issue-list 
+        [issueList]="issues$ |async" [isLoading]="loading$ | async" [errorMessage]="errorMessage$ | async">
+    </app-issue-list>
 </div>

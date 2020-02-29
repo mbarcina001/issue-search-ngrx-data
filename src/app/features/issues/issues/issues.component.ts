@@ -18,10 +18,18 @@ export class IssuesComponent {
     this.issues$ = issueService.entities$;
     this.loading$ = issueService.loading$;
     this.errorMessage$ = issueService.errors$;
+
+    this.loading$.subscribe((value) => {
+      console.log('loading => ');
+      console.log(value);
+      console.log('<= loading');
+    })
   }
 
   getIssuesByRepo(pRepo: string) {
-    this.issueService.getByRepo(pRepo);
+    this.issueService.getByRepo(pRepo).subscribe((response) => {
+      this.issueService.addAllToCache(response);
+    });
   }
 
 }

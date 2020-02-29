@@ -1,25 +1,17 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { IssueService } from './store/services/issue.service';
 import { AppComponent } from './app.component';
 import { HttpClientModule, } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
+import { MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppStoreModule } from './store/app-store.module';
 import { Routes, RouterModule } from '@angular/router';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
-
-
-const MaterialComponents = [
-  MatProgressSpinnerModule,
-  MatDialogModule
-] 
+import { StoreModule } from '@ngrx/store';
+import { EntityDataModule, DefaultDataServiceConfig } from '@ngrx/data';
+import { entityConfig, defaultDataServiceConfig } from './store/entity/entity-metadata';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'issues' },
@@ -38,20 +30,16 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     SharedModule,
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    MaterialComponents,
+    MatDialogModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
-    AppStoreModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
     RouterModule.forRoot(routes),
-    CoreModule
+    CoreModule,
+    StoreModule.forRoot({}),
+    EntityDataModule.forRoot(entityConfig),
+    EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
-  providers: [
-    IssueService,
-    ErrorHandler,
-  ],
+  providers: [{ provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig }],
   bootstrap: [AppComponent],
   entryComponents: [],
 })

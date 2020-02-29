@@ -13,8 +13,7 @@ export class FieldErrorComponent{
     'pattern': (params) => 'Value is not correct.',
   };
 
-  @Input()
- private control: AbstractControlDirective | AbstractControl;
+  @Input() private control: AbstractControlDirective | AbstractControl;
 
  constructor(){}
 

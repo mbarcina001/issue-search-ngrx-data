@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import * as moment from 'moment';
+import { Component, Input } from '@angular/core';
+import { Issue } from 'src/app/core/model/issue';
 
 @Component({
   selector: 'app-issue-list',
@@ -8,6 +7,10 @@ import * as moment from 'moment';
   styleUrls: ['./issue-list.component.scss']
 })
 export class IssueListComponent {
+
+  @Input() issueList: Issue[];
+  @Input() isLoading: boolean;
+  @Input() errorMessage: string;
 
 }
 

@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core';
 
 import { FieldErrorComponent } from './components/layout/field-error/field-error.component';
 import { DialogComponent } from './components/layout/dialog/dialog.component';
 
 import { MatProgressSpinnerModule, MatDialogModule } from '@angular/material';
+import { CommonModule } from '@angular/common';
 
 const MaterialComponents = [
     MatProgressSpinnerModule,
@@ -13,10 +13,14 @@ const MaterialComponents = [
 
 @NgModule({
     imports: [
-        BrowserModule,
-        MaterialComponents,
+        CommonModule,
+        MaterialComponents
     ],
     declarations: [
+        DialogComponent,
+        FieldErrorComponent
+    ],
+    exports: [
         DialogComponent,
         FieldErrorComponent
     ]
